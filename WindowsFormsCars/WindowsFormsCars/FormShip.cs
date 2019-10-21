@@ -12,7 +12,7 @@ namespace WindowsFormsCars
 {
     public partial class FormShip : Form
     {
-        private MotorShip ship;
+        private ITransport ship;
 
         public FormShip()
         {
@@ -24,11 +24,19 @@ namespace WindowsFormsCars
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
             Graphics gr = Graphics.FromImage(bmp);
             
-            ship.DrawCar(gr);
+            ship.DrawShip(gr);
             pictureBoxShip.Image = bmp;
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            ship = new Ship(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxShip.Width,
+           pictureBoxShip.Height);
+            Draw();
+        }
+        private void buttonCreateMotorShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             ship = new MotorShip(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
@@ -37,6 +45,7 @@ namespace WindowsFormsCars
            pictureBoxShip.Height);
             Draw();
         }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки

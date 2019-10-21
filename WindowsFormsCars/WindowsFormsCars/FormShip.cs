@@ -26,16 +26,18 @@ namespace WindowsFormsCars
             
             ship.DrawCar(gr);
             pictureBoxShip.Image = bmp;
-        }
+        }
+
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             ship = new MotorShip(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
-           Color.Yellow, true, true, true, true);
+           Color.Yellow, true);
             ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxShip.Width,
            pictureBoxShip.Height);
             Draw();
-        }        private void buttonMove_Click(object sender, EventArgs e)
+        }
+        private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки
             string name = (sender as Button).Name;

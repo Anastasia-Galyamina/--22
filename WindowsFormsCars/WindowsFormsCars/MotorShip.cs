@@ -38,7 +38,7 @@ namespace WindowsFormsCars
         /// Максимальная скорость
         /// </summary>
         /// 
-        public bool Flag { private set; get; }
+        public bool Tube { private set; get; }
 
         public int MaxSpeed { private set; get; }
         /// <summary>
@@ -56,16 +56,7 @@ namespace WindowsFormsCars
         /// <summary>
         /// Признак наличия переднего спойлера
         /// </summary>
-        public bool FrontSpoiler { private set; get; }
-        /// <summary>
-        /// Признак наличия боковых спойлеров
-        /// </summary>
-        public bool SideSpoiler { private set; get; }
-
-        /// <summary>
-        /// Признак наличия заднего спойлера
-        /// </summary>
-        public bool BackSpoiler { private set; get; }
+              
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -76,17 +67,13 @@ namespace WindowsFormsCars
         /// <param name="frontSpoiler">Признак наличия переднего спойлера</param>
         /// <param name="sideSpoiler">Признак наличия боковых спойлеров</param>
         /// <param name="backSpoiler">Признак наличия заднего спойлера</param>
-        public MotorShip(int maxSpeed, float weight, Color mainColor, Color dopColor,
-       bool frontSpoiler, bool sideSpoiler, bool backSpoiler, bool flag)
+        public MotorShip(int maxSpeed, float weight, Color mainColor, Color dopColor,  bool tube)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
-            DopColor = dopColor;
-            FrontSpoiler = frontSpoiler;
-            SideSpoiler = sideSpoiler;
-            BackSpoiler = backSpoiler;
-            Flag = flag;
+            DopColor = dopColor;            
+            Tube = tube;
         }
         /// <summary>
         /// Установка позиции автомобиля
@@ -175,7 +162,8 @@ namespace WindowsFormsCars
             Brush spoiler = new SolidBrush(DopColor);
             g.FillRectangle(spoiler, _startPosX + 40, _startPosY + 20, 80, 10);
 
-            //DrawFlag(g);
+            if(Tube == true)
+            DrawTube(g);
 
         }
     }

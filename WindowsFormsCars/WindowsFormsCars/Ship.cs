@@ -60,18 +60,14 @@ namespace WindowsFormsCars
         }
         public override void DrawShip(Graphics g)
         {
-            Pen pen = new Pen(Color.Black);
-            // отрисуем сперва передний спойлер автомобиля (чтобы потом отрисовка автомобиля на него "легла")
+            //Нижняя палуба
+            Pen pen = new Pen(Color.Black);            
             g.DrawRectangle(pen, _startPosX, _startPosY + 30, 150, 30);
             Brush br = new SolidBrush(MainColor);
             g.FillRectangle(br, _startPosX, _startPosY + 30, 150, 30);
-
-            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 20, 80, 10);
-            //Brush spoiler = new SolidBrush(DopColor);
-            g.FillRectangle(br, _startPosX + 40, _startPosY + 20, 80, 10);
-
-            
-
+            //Верхняя палуба
+            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 20, 80, 10);            
+            g.FillRectangle(br, _startPosX + 40, _startPosY + 20, 80, 10); 
         }
     }
 }

@@ -20,10 +20,9 @@ namespace WindowsFormsCars
         {
             InitializeComponent();
             parking = new Parking<ITransport>(20, pictureBoxParking.Width,
-           pictureBoxParking.Height);
+            pictureBoxParking.Height);
             Draw();
         }
-
         /// <summary>
         /// Метод отрисовки парковки
         /// </summary>
@@ -35,7 +34,7 @@ namespace WindowsFormsCars
             pictureBoxParking.Image = bmp;
         }
         /// <summary>
-        /// Обработка нажатия кнопки "Припарковать автомобиль"
+        /// Обработка нажатия кнопки "Припарковать корабль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -49,9 +48,8 @@ namespace WindowsFormsCars
                 Draw();
             }
         }
-
         /// <summary>
-        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
+        /// Обработка нажатия кнопки "Припарковать теплоход"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -71,7 +69,7 @@ namespace WindowsFormsCars
         }
 
         /// <summary>
-        /// Обработка нажатия кнопки "Забрать"
+        /// Обработка нажатия кнопки "Забрать корабль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -83,10 +81,10 @@ namespace WindowsFormsCars
                 if (car != null)
                 {
                     Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width,
-                   pictureBoxTakeShip.Height);
+                    pictureBoxTakeShip.Height);
                     Graphics gr = Graphics.FromImage(bmp);
                     car.SetPosition(5, 5, pictureBoxTakeShip.Width,
-                   pictureBoxTakeShip.Height);
+                    pictureBoxTakeShip.Height);
                     car.DrawShip(gr);
                     pictureBoxTakeShip.Image = bmp;
                 }
@@ -98,8 +96,6 @@ namespace WindowsFormsCars
                 }
                 Draw();
             }
-        }
-
-       
+        }       
     }
 }

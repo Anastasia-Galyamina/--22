@@ -23,14 +23,12 @@ namespace WindowsFormsCars
         private int PictureHeight { get; set; }
         /// <summary>
         /// Размер парковочного места (ширина)
-        /// </summary>
-        /// 
+        /// </summary>        
         private const int _placeSizeWidth = 210;
         /// <summary>
         /// Размер парковочного места (высота)
         /// </summary>
         private const int _placeSizeHeight = 80;
-
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _places = new T[sizes];
@@ -41,7 +39,6 @@ namespace WindowsFormsCars
                 _places[i] = null;
             }
         }
-
         public static int operator +(Parking<T> p, T car)
         {
             for (int i = 0; i < p._places.Length; i++)
@@ -57,7 +54,6 @@ namespace WindowsFormsCars
             }
             return -1;
         }
-
         public static T operator -(Parking<T> p, int index)
         {
             if (index < 0 || index > p._places.Length)
@@ -72,7 +68,6 @@ namespace WindowsFormsCars
             }
             return null;
         }
-
         private bool CheckFreePlace(int index)
         {
             return _places[index] == null;
@@ -82,7 +77,6 @@ namespace WindowsFormsCars
         /// Метод отрисовки парковки
         /// </summary>
         /// <param name="g"></param>
-
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -113,8 +107,5 @@ namespace WindowsFormsCars
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
         }
-
-
-
     }
 }

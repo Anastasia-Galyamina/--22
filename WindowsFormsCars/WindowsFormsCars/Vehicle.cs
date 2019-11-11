@@ -30,20 +30,19 @@ namespace WindowsFormsCars
         /// </summary>
         private const int carWidth = 100;
         /// <summary>
-        /// Ширина отрисовки автомобиля
+        /// Высота отрисовки автомобиля
         /// </summary>
         private const int carHeight = 60;
         /// <summary>
         /// Максимальная скорость
-        /// </summary>
-        /// 
+        /// </summary>         
         public int MaxSpeed { protected set; get; }
         /// <summary>
         /// Вес автомобиля
         /// </summary>
         public float Weight { protected set; get; }
         /// <summary>
-        /// Основной цвет кузова
+        /// Основной цвет 
         /// </summary>
         public Color MainColor { protected set; get; }
         public void SetPosition(int x, int y, int width, int height)
@@ -54,6 +53,6 @@ namespace WindowsFormsCars
             _pictureHeight = height;
         }
        public abstract void  MoveTransport(Direction direction);
-        public abstract void DrawShip(Graphics g);
+       public abstract void DrawShip(Graphics g);
     }
 }

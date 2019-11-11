@@ -14,7 +14,7 @@ namespace WindowsFormsCars
         /// </summary>
         protected const int carWidth = 100;
         /// <summary>
-        /// Ширина отрисовки автомобиля
+        /// Высота отрисовки автомобиля
         /// </summary>
         protected const int carHeight = 60;
         public Ship(int maxSpeed, float weight, Color mainColor)
@@ -22,7 +22,11 @@ namespace WindowsFormsCars
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;            
-        }
+        } 
+        /// <summary>
+        /// Изменение направления пермещения
+        /// </summary>
+        /// <param name="direction">Направление</param>        
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -60,18 +64,14 @@ namespace WindowsFormsCars
         }
         public override void DrawShip(Graphics g)
         {
-            Pen pen = new Pen(Color.Black);
-            // отрисуем сперва передний спойлер автомобиля (чтобы потом отрисовка автомобиля на него "легла")
+            //Нижняя палуба
+            Pen pen = new Pen(Color.Black);            
             g.DrawRectangle(pen, _startPosX, _startPosY + 30, 150, 30);
             Brush br = new SolidBrush(MainColor);
             g.FillRectangle(br, _startPosX, _startPosY + 30, 150, 30);
-
-            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 20, 80, 10);
-            //Brush spoiler = new SolidBrush(DopColor);
-            g.FillRectangle(br, _startPosX + 40, _startPosY + 20, 80, 10);
-
-            
-
+            //Верхняя палуба
+            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 20, 80, 10);            
+            g.FillRectangle(br, _startPosX + 40, _startPosY + 20, 80, 10);                      
         }
     }
 }

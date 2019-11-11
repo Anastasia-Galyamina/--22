@@ -5,17 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-
 namespace WindowsFormsCars
 {
     class MotorShip
     {
         /// <summary>
-        /// Левая координата отрисовки автомобиля
+        /// Левая координата отрисовки корабля
         /// </summary>
         private float _startPosX;
         /// <summary>
-        /// Правая кооридната отрисовки автомобиля
+        /// Правая кооридната отрисовки корабля
         /// </summary>
         private float _startPosY;
         /// <summary>
@@ -27,19 +26,20 @@ namespace WindowsFormsCars
         /// </summary>
         private int _pictureHeight;
         /// <summary>
-        /// Ширина отрисовки автомобиля
+        /// Ширина отрисовки корабля
         /// </summary>
         private const int carWidth = 100;
         /// <summary>
-        /// Ширина отрисовки автомобиля
+        /// Ширина отрисовки корабля
         /// </summary>
         private const int carHeight = 60;
         /// <summary>
-        /// Максимальная скорость
-        /// </summary>
-        /// 
+        /// Наличие трубы
+        /// </summary>         
         public bool Tube { private set; get; }
-
+        /// <summary>
+        /// Максимальная скорость
+        /// </summary> 
         public int MaxSpeed { private set; get; }
         /// <summary>
         /// Вес автомобиля
@@ -52,21 +52,15 @@ namespace WindowsFormsCars
         /// <summary>
         /// Дополнительный цвет
         /// </summary>
-        public Color DopColor { private set; get; }
-        /// <summary>
-        /// Признак наличия переднего спойлера
-        /// </summary>
-              
+        public Color DopColor { private set; get; }  
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
-        /// <param name="weight">Вес автомобиля</param>
-        /// <param name="mainColor">Основной цвет кузова</param>
+        /// <param name="weight">Вес корабля</param>
+        /// <param name="mainColor">Основной цвет корабля</param>
         /// <param name="dopColor">Дополнительный цвет</param>
-        /// <param name="frontSpoiler">Признак наличия переднего спойлера</param>
-        /// <param name="sideSpoiler">Признак наличия боковых спойлеров</param>
-        /// <param name="backSpoiler">Признак наличия заднего спойлера</param>
+        /// <param name="tube">Признак наличия трубы</param>        
         public MotorShip(int maxSpeed, float weight, Color mainColor, Color dopColor,  bool tube)
         {
             MaxSpeed = maxSpeed;
@@ -90,27 +84,17 @@ namespace WindowsFormsCars
             _pictureHeight = height;
         }
         /// <summary>
+        /// Отрисовка трубы
+        /// </summary>              
+        public void DrawTube(Graphics g)
+        {            
+            Brush brRed = new SolidBrush(Color.Red);
+            g.FillRectangle(brRed, _startPosX + 100, _startPosY, 10, 20);
+        }
+        /// <summary>
         /// Изменение направления пермещения
         /// </summary>
         /// <param name="direction">Направление</param>
-        /// 
-
-
-
-
-
-
-        public void DrawTube(Graphics g)
-        {
-            //Pen pen = new Pen(Color.Black);
-            //g.DrawLine(pen, _startPosX + 100, _startPosY + 20, _startPosX + 100, _startPosY);
-
-            Brush brRed = new SolidBrush(Color.Red);
-            g.FillRectangle(brRed, _startPosX + 100, _startPosY, 10, 20);
-
-        }
-
-
         public void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -147,27 +131,24 @@ namespace WindowsFormsCars
             }
         }
         /// <summary>
-        /// Отрисовка автомобиля
+        /// Отрисовка корабля
         /// </summary>
         /// <param name="g"></param>
         public void DrawCar(Graphics g)
         {
-            Pen pen = new Pen(Color.Black);
-            // отрисуем сперва передний спойлер автомобиля (чтобы потом отрисовка автомобиля на него "легла")
+            //Нижняя палуба
+            Pen pen = new Pen(Color.Black);            
             g.DrawRectangle(pen, _startPosX, _startPosY + 30, 150, 30);
             Brush br = new SolidBrush(MainColor);
             g.FillRectangle(br, _startPosX, _startPosY + 30, 150, 30);
-
+            //Верхняя палуба
             g.DrawRectangle(pen, _startPosX + 40, _startPosY + 20, 80, 10);
             Brush spoiler = new SolidBrush(DopColor);
             g.FillRectangle(spoiler, _startPosX + 40, _startPosY + 20, 80, 10);
-
+            //Труба
             if(Tube == true)
             DrawTube(g);
-
         }
     }
-
-
 }
 

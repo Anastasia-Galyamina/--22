@@ -46,7 +46,7 @@ namespace WindowsFormsCars
         /// </summary>
         public float Weight { private set; get; }
         /// <summary>
-        /// Основной цвет кузова
+        /// Основной цвет 
         /// </summary>
         public Color MainColor { private set; get; }
         /// <summary>

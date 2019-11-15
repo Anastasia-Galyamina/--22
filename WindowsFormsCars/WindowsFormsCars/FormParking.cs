@@ -60,7 +60,7 @@ namespace WindowsFormsCars
                  ColorDialog dialog = new ColorDialog();
                  if (dialog.ShowDialog() == DialogResult.OK)
                  {
-                     var car = new Car(100, 1000, dialog.Color);
+                     var car = new Ship(100, 1000, dialog.Color);
                      int place = parking[listBoxLevels.SelectedIndex] + car;
                      if (place == -1)
                      {
@@ -69,7 +69,7 @@ namespace WindowsFormsCars
                      }
                      Draw();
                  }
-            }
+            }
         }
         /// <summary>
         /// Обработка нажатия кнопки "Припарковать теплоход"
@@ -86,8 +86,8 @@ namespace WindowsFormsCars
                      ColorDialog dialogDop = new ColorDialog();
                      if (dialogDop.ShowDialog() == DialogResult.OK)
                      {
-                        var car = new SportCar(100, 1000, dialog.Color,
-                        dialogDop.Color, true, true, true);
+                        var car = new MotorShip(100, 1000, dialog.Color,
+                        dialogDop.Color, true);
                         int place = parking[listBoxLevels.SelectedIndex] + car;
                         if (place == -1)
                         {
@@ -110,23 +110,23 @@ namespace WindowsFormsCars
             {
                  if (maskedTextBox.Text != "")
                  {
-                     var car = parking[listBoxLevels.SelectedIndex] -
+                     var ship = parking[listBoxLevels.SelectedIndex] -
                      Convert.ToInt32(maskedTextBox.Text);
-                     if (car != null)
+                     if (ship != null)
                      {
-                         Bitmap bmp = new Bitmap(pictureBoxTakeCar.Width,
-                         pictureBoxTakeCar.Height);
+                         Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width,
+                         pictureBoxTakeShip.Height);
                          Graphics gr = Graphics.FromImage(bmp);
-                         car.SetPosition(5, 5, pictureBoxTakeCar.Width,
-                         pictureBoxTakeCar.Height);
-                         car.DrawCar(gr);
-                         pictureBoxTakeCar.Image = bmp;
+                         ship.SetPosition(5, 5, pictureBoxTakeShip.Width,
+                         pictureBoxTakeShip.Height);
+                         ship.DrawShip(gr);
+                         pictureBoxTakeShip.Image = bmp;
                      }
                      else
                      {
-                         Bitmap bmp = new Bitmap(pictureBoxTakeCar.Width,
-                         pictureBoxTakeCar.Height);
-                         pictureBoxTakeCar.Image = bmp;
+                         Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width,
+                         pictureBoxTakeShip.Height);
+                         pictureBoxTakeShip.Image = bmp;
                      }
                      Draw();
                  }

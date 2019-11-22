@@ -70,8 +70,8 @@ namespace WindowsFormsCars
             Brush br = new SolidBrush(MainColor);
             g.FillRectangle(br, _startPosX, _startPosY + 30, 150, 30);
             //Верхняя палуба
-            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 20, 80, 10);            
-            g.FillRectangle(br, _startPosX + 40, _startPosY + 20, 80, 10);                      
+            g.DrawRectangle(pen, _startPosX + 40, _startPosY + 20, 80, 10);  
+            g.FillRectangle(br, _startPosX + 40, _startPosY + 20, 80, 10); 
         }
     }
 }

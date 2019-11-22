@@ -35,7 +35,7 @@ namespace WindowsFormsCars
         private const int carHeight = 60;
         /// <summary>
         /// Максимальная скорость
-        /// </summary>         
+        /// <summary>
         public int MaxSpeed { protected set; get; }
         /// <summary>
         /// Вес автомобиля

@@ -12,12 +12,20 @@ namespace WindowsFormsCars
 {
     public partial class FormShip : Form
     {
+ lab2
         private ITransport ship;
+
+        private MotorShip ship;
+ laba1
         public FormShip()
         {
             InitializeComponent();
         }
+ lab2
         private void Draw()
+
+       private void Draw()
+laba1
         {
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
             Graphics gr = Graphics.FromImage(bmp);            
@@ -43,6 +51,7 @@ namespace WindowsFormsCars
            pictureBoxShip.Height);
             Draw();
         }
+        /// Обработка нажатия кнопок управления
         private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки

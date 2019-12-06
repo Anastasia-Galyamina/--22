@@ -14,7 +14,7 @@ namespace WindowsFormsCars
         /// </summary>
         private Dictionary<int, T> _places;
         /// <summary>
-        /// Максимальное количество мест 
+        /// Максимальное количество мест на парковке
         /// </summary>
         private int _maxCount;
         /// <summary>
@@ -27,12 +27,18 @@ namespace WindowsFormsCars
         private int PictureHeight { get; set; }
         /// <summary>
         /// Размер парковочного места (ширина)
-        /// </summary>        
+        /// </summary>
         private const int _placeSizeWidth = 210;
         /// <summary>
         /// Размер парковочного места (высота)
         /// </summary>
         private const int _placeSizeHeight = 80;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="sizes">Количество мест на парковке</param>
+        /// <param name="pictureWidth">Рамзер парковки - ширина</param>
+        /// <param name="pictureHeight">Рамзер парковки - высота</param>
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
@@ -40,11 +46,18 @@ namespace WindowsFormsCars
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
+        /// <summary>
+        /// Перегрузка оператора сложения
+        /// Логика действия: на парковку добавляется автомобиль
+        /// </summary>
+        /// <param name="p">Парковка</param>
+        /// <param name="car">Добавляемый автомобиль</param>
+        /// <returns></returns>
         public static int operator +(Parking<T> p, T car)
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -59,6 +72,13 @@ namespace WindowsFormsCars
             }
             return -1;
         }
+        /// <summary>
+        /// Перегрузка оператора вычитания
+        /// Логика действия: с парковки забираем автомобиль
+        /// </summary>
+        /// <param name="p">Парковка</param>
+        /// <param name="index">Индекс места, с которого пытаемся извлечь объект</param>
+        /// <returns></returns>
         public static T operator -(Parking<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
@@ -67,15 +87,20 @@ namespace WindowsFormsCars
                 p._places.Remove(index);
                 return car;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
+        /// <summary>
+        /// Метод проверки заполнености парковочного места (ячейки массива)
+        /// </summary>
+        /// <param name="index">Номер парковочного места (порядковый номер в массиве)</param>
+        /// <returns></returns>
         private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
         /// <summary>
         /// Метод отрисовки парковки
-        /// </summary>
+        /// </summary>        
         /// <param name="g"></param>
         public void Draw(Graphics g)
         {
@@ -128,8 +153,11 @@ namespace WindowsFormsCars
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
                 }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
+                }
             }
         }
-
     }
 }

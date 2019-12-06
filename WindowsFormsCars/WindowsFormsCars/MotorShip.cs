@@ -48,5 +48,16 @@ namespace WindowsFormsCars
             if (Tube == true)
                 DrawTube(g);
         }
+        /// Смена дополнительного цвета
+        /// </summary>
+        /// <param name="color"></param>
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Tube;
+        }
     }
 }

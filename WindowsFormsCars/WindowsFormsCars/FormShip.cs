@@ -12,21 +12,31 @@ namespace WindowsFormsCars
 {
     public partial class FormShip : Form
     {
-        private MotorShip ship;
+        private ITransport ship;
+
         public FormShip()
         {
             InitializeComponent();
         }
-       private void Draw()
+
+        private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            
             ship.DrawShip(gr);
             pictureBoxShip.Image = bmp;
         }
         //Создаём корабль
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateShip_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            ship = new Ship(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxShip.Width,
+            pictureBoxShip.Height);
+            Draw();
+        }
+        //Создаём теплоход
+        private void buttonCreateMotorShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             ship = new MotorShip(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,

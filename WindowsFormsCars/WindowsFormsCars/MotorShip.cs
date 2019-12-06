@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsCars
 {
-    class MotorShip : Ship
+    class MotorShip : Ship, IComparable<MotorShip>, IEquatable<MotorShip>
     {
         public bool Tube { private set; get; }
         /// <summary>
@@ -71,5 +71,82 @@ namespace WindowsFormsCars
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Tube;
         }
+        /// <summary>
+        /// Метод интерфейса IComparable для класса MotorShip
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(MotorShip other)
+        {
+            var res = (this is Ship).CompareTo(other is Ship);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Tube != other.Tube)
+            {
+                return Tube.CompareTo(other.Tube);
+            }            
+            return 0;
+        }
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса MotorShip
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(MotorShip other)
+        {
+            var res = (this as Ship).Equals(other as Ship);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Tube != other.Tube)
+            {
+                return false;
+            }            
+            return true;
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is MotorShip carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

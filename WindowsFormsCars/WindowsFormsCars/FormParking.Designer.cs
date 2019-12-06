@@ -42,6 +42,7 @@
             this.load = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeShip)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -49,17 +50,19 @@
             // 
             // pictureBoxParking
             // 
-            this.pictureBoxParking.Location = new System.Drawing.Point(-2, 39);
+            this.pictureBoxParking.Location = new System.Drawing.Point(-3, 48);
+            this.pictureBoxParking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(826, 415);
+            this.pictureBoxParking.Size = new System.Drawing.Size(1101, 511);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
             // buttonSetShip
             // 
-            this.buttonSetShip.Location = new System.Drawing.Point(908, 89);
+            this.buttonSetShip.Location = new System.Drawing.Point(1211, 110);
+            this.buttonSetShip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSetShip.Name = "buttonSetShip";
-            this.buttonSetShip.Size = new System.Drawing.Size(105, 48);
+            this.buttonSetShip.Size = new System.Drawing.Size(140, 59);
             this.buttonSetShip.TabIndex = 1;
             this.buttonSetShip.Text = "Припарковать корабль";
             this.buttonSetShip.UseVisualStyleBackColor = true;
@@ -68,33 +71,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(905, 222);
+            this.label1.Location = new System.Drawing.Point(1207, 273);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.Size = new System.Drawing.Size(121, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Забрать корабль";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(880, 241);
+            this.label2.Location = new System.Drawing.Point(1173, 297);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Место";
             // 
             // maskedTextBox
             // 
-            this.maskedTextBox.Location = new System.Drawing.Point(925, 238);
+            this.maskedTextBox.Location = new System.Drawing.Point(1233, 293);
+            this.maskedTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maskedTextBox.Name = "maskedTextBox";
-            this.maskedTextBox.Size = new System.Drawing.Size(74, 20);
+            this.maskedTextBox.Size = new System.Drawing.Size(97, 22);
             this.maskedTextBox.TabIndex = 5;
             // 
             // buttonTakeShip
             // 
-            this.buttonTakeShip.Location = new System.Drawing.Point(890, 264);
+            this.buttonTakeShip.Location = new System.Drawing.Point(1187, 325);
+            this.buttonTakeShip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonTakeShip.Name = "buttonTakeShip";
-            this.buttonTakeShip.Size = new System.Drawing.Size(109, 30);
+            this.buttonTakeShip.Size = new System.Drawing.Size(145, 37);
             this.buttonTakeShip.TabIndex = 6;
             this.buttonTakeShip.Text = "Забрать корабль";
             this.buttonTakeShip.UseVisualStyleBackColor = true;
@@ -102,19 +109,21 @@
             // 
             // pictureBoxTakeShip
             // 
-            this.pictureBoxTakeShip.Location = new System.Drawing.Point(830, 300);
+            this.pictureBoxTakeShip.Location = new System.Drawing.Point(1107, 369);
+            this.pictureBoxTakeShip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxTakeShip.Name = "pictureBoxTakeShip";
-            this.pictureBoxTakeShip.Size = new System.Drawing.Size(169, 92);
+            this.pictureBoxTakeShip.Size = new System.Drawing.Size(225, 113);
             this.pictureBoxTakeShip.TabIndex = 7;
             this.pictureBoxTakeShip.TabStop = false;
             // 
             // listBoxLevels
             // 
             this.listBoxLevels.FormattingEnabled = true;
-            this.listBoxLevels.Location = new System.Drawing.Point(906, 2);
-            this.listBoxLevels.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxLevels.ItemHeight = 16;
+            this.listBoxLevels.Location = new System.Drawing.Point(1208, 2);
+            this.listBoxLevels.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxLevels.Name = "listBoxLevels";
-            this.listBoxLevels.Size = new System.Drawing.Size(107, 82);
+            this.listBoxLevels.Size = new System.Drawing.Size(141, 100);
             this.listBoxLevels.TabIndex = 8;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
@@ -125,7 +134,8 @@
             this.файлToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1011, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(1348, 28);
             this.menuStrip.TabIndex = 9;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -135,20 +145,20 @@
             this.save,
             this.load});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // save
             // 
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(132, 22);
+            this.save.Size = new System.Drawing.Size(158, 26);
             this.save.Text = "Сохранить";
             this.save.Click += new System.EventHandler(this.СохранитьToolStripMenuItem_Click);
             // 
             // load
             // 
             this.load.Name = "load";
-            this.load.Size = new System.Drawing.Size(132, 22);
+            this.load.Size = new System.Drawing.Size(158, 26);
             this.load.Text = "Загрузить";
             this.load.Click += new System.EventHandler(this.ЗагрузитьToolStripMenuItem_Click);
             // 
@@ -161,11 +171,23 @@
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(1211, 186);
+            this.buttonSort.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(140, 59);
+            this.buttonSort.TabIndex = 10;
+            this.buttonSort.Text = "Сортировать";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormParking
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 450);
+            this.ClientSize = new System.Drawing.Size(1348, 554);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.pictureBoxTakeShip);
             this.Controls.Add(this.buttonTakeShip);
@@ -176,6 +198,7 @@
             this.Controls.Add(this.pictureBoxParking);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormParking";
             this.Text = "FormParking";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
@@ -203,5 +226,6 @@
         private System.Windows.Forms.ToolStripMenuItem load;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button buttonSort;
     }
 }

@@ -78,25 +78,20 @@ namespace WindowsFormsCars
                 {
                     //Начинаем уровень
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (ITransport ship in level)
                     {
-                       try
+                        //Записываем тип мшаины
+                        if (ship.GetType().Name == "Ship")
                         {
-                            var ship = level[i];
-                            //Записываем тип корабля
-                            if (ship.GetType().Name == "Ship")
-                            {
-                                sw.Write(i + ":Ship:"); 
-                            }
-                            if (ship.GetType().Name == "MotorShip")
-                            {
-                                sw.Write(i + ":MotorShip:");
-                            }
-                            //Записываемые параметры
-                            sw.WriteLine(ship); 
+                            sw.Write(level.GetKey + ":Ship:");
                         }
-                        finally { } 
-                    }
+                        if (ship.GetType().Name == "MotorShip")
+                        {
+                            sw.Write(level.GetKey + ":MotorShip:");
+                        }
+                        //Записываемые параметры
+                        sw.WriteLine(ship);                  
+                   }
                 }
             }           
         }
@@ -169,6 +164,13 @@ namespace WindowsFormsCars
                 }  
             }
             return true;
+        }
+        /// <summary>
+        /// Сортировка уровней
+        /// </summary>
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }

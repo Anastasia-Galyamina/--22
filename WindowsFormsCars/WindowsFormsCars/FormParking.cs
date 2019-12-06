@@ -107,33 +107,38 @@ namespace WindowsFormsCars
             Draw();
         }        
         /// <summary>
-        /// Обработка нажатия кнопки "Добавить автомобиль"
+        /// Обработка нажатия кнопки "Добавить корабль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonSetShip_Click(object sender, EventArgs e)
         {
             form = new FormShipConfig();
-            form.AddEvent(AddCar);
+            form.AddEvent(AddShip);
             form.Show();
         }
         /// <summary>
         /// Метод добавления корабля
         /// </summary>
         /// <param name="ship"></param>
-        private void AddCar(ITransport ship)
+        private void AddShip(ITransport ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)
             {
                 try
                 {
                     int place = parking[listBoxLevels.SelectedIndex] + ship;
-                    logger.Info("Добавлен автомобиль " + ship.ToString() + " на место " + place);
+                    logger.Info("Добавлен корабль " + ship.ToString() + " на место " + place);
                     Draw();
                 }
                 catch (ParkingOverflowException ex)
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,  MessageBoxIcon.Error);
+                    logger.Error(ex.Message);
+                }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Error(ex.Message);
                 }
                 catch (Exception ex)
@@ -198,6 +203,17 @@ namespace WindowsFormsCars
                 }
                 Draw();
             }
-        }       
+        }
+        /// <summary>
+        /// Обработка нажатия кнопки "Сортировка"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
+        }
     }
 }

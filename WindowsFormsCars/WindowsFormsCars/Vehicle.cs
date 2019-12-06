@@ -10,11 +10,11 @@ namespace WindowsFormsCars
     public abstract class Vehicle : ITransport
     {
         /// <summary>
-        /// Левая координата отрисовки автомобиля
+        /// Левая координата отрисовки корабля
         /// </summary>
         protected float _startPosX;
         /// <summary>
-        /// Правая кооридната отрисовки автомобиля
+        /// Правая кооридната отрисовки корабля
         /// </summary>
         protected float _startPosY;
         /// <summary>
@@ -24,21 +24,13 @@ namespace WindowsFormsCars
         /// <summary>
         /// Высота окна отрисовки
         /// </summary>
-        protected int _pictureHeight;
-        /// <summary>
-        /// Ширина отрисовки автомобиля
-        /// </summary>
-        private const int carWidth = 100;
-        /// <summary>
-        /// Высота отрисовки автомобиля
-        /// </summary>
-        private const int carHeight = 60;
+        protected int _pictureHeight;        
         /// <summary>
         /// Максимальная скорость
         /// </summary>         
         public int MaxSpeed { protected set; get; }
         /// <summary>
-        /// Вес автомобиля
+        /// Вес корабля
         /// </summary>
         public float Weight { protected set; get; }
         /// <summary>

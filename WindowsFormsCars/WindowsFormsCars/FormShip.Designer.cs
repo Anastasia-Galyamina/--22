@@ -32,11 +32,12 @@ namespace WindowsFormsCars
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormShip));
             this.pictureBoxShip = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonCreateShip = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonCreateMotorShip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,15 +50,15 @@ namespace WindowsFormsCars
             this.pictureBoxShip.TabIndex = 0;
             this.pictureBoxShip.TabStop = false;
             // 
-            // buttonCreate
+            // buttonCreateShip
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(708, 235);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(108, 38);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateShip.Location = new System.Drawing.Point(603, 235);
+            this.buttonCreateShip.Name = "buttonCreateShip";
+            this.buttonCreateShip.Size = new System.Drawing.Size(108, 38);
+            this.buttonCreateShip.TabIndex = 1;
+            this.buttonCreateShip.Text = "Создать корабль";
+            this.buttonCreateShip.UseVisualStyleBackColor = true;
+            this.buttonCreateShip.Click += new System.EventHandler(this.buttonCreateShip_Click);
             // 
             // buttonUp
             // 
@@ -103,16 +104,27 @@ namespace WindowsFormsCars
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // buttonCreateMotorShip
+            // 
+            this.buttonCreateMotorShip.Location = new System.Drawing.Point(733, 235);
+            this.buttonCreateMotorShip.Name = "buttonCreateMotorShip";
+            this.buttonCreateMotorShip.Size = new System.Drawing.Size(108, 38);
+            this.buttonCreateMotorShip.TabIndex = 6;
+            this.buttonCreateMotorShip.Text = "Создать теплоход";
+            this.buttonCreateMotorShip.UseVisualStyleBackColor = true;
+            this.buttonCreateMotorShip.Click += new System.EventHandler(this.buttonCreateMotorShip_Click);
+            // 
             // FormShip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 455);
+            this.Controls.Add(this.buttonCreateMotorShip);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonUp);
-            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.buttonCreateShip);
             this.Controls.Add(this.pictureBoxShip);
             this.Name = "FormShip";
             this.Text = "FormShip";
@@ -130,11 +142,12 @@ namespace WindowsFormsCars
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxShip;
-        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonCreateShip;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button buttonCreateMotorShip;
     }
 }
 

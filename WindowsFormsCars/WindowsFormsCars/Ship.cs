@@ -10,11 +10,11 @@ namespace WindowsFormsCars
     class Ship : Vehicle
     {
         /// <summary>
-        /// Ширина отрисовки автомобиля
+        /// Ширина отрисовки корабля
         /// </summary>
         protected const int carWidth = 100;
         /// <summary>
-        /// Высота отрисовки автомобиля
+        /// Высота отрисовки корабля
         /// </summary>
         protected const int carHeight = 60;
         public Ship(int maxSpeed, float weight, Color mainColor)

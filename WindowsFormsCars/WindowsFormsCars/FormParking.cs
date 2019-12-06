@@ -77,7 +77,7 @@ namespace WindowsFormsCars
                          pictureBoxTakeShip.Height);
                          ship.DrawShip(gr);
                          pictureBoxTakeShip.Image = bmp; 
-                         logger.Info("Изъят автомобиль " + ship.ToString() + " с места " + maskedTextBox.Text); 
+                         logger.Info("Изъят корабль " + ship.ToString() + " с места " + maskedTextBox.Text); 
                          Draw();
                     }
                     catch (ParkingNotFoundException ex)
@@ -107,7 +107,7 @@ namespace WindowsFormsCars
             Draw();
         }        
         /// <summary>
-        /// Обработка нажатия кнопки "Добавить автомобиль"
+        /// Обработка нажатия кнопки "Добавить корабль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -128,7 +128,7 @@ namespace WindowsFormsCars
                 try
                 {
                     int place = parking[listBoxLevels.SelectedIndex] + ship;
-                    logger.Info("Добавлен автомобиль " + ship.ToString() + " на место " + place);
+                    logger.Info("Добавлен корабль " + ship.ToString() + " на место " + place);
                     Draw();
                 }
                 catch (ParkingOverflowException ex)

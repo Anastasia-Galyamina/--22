@@ -22,7 +22,7 @@ namespace WindowsFormsCars
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
             Graphics gr = Graphics.FromImage(bmp);
             
-            ship.DrawCar(gr);
+            ship.DrawShip(gr);
             pictureBoxShip.Image = bmp;
         }
         //Создаём корабль

@@ -134,7 +134,7 @@ namespace WindowsFormsCars
         /// Отрисовка корабля
         /// </summary>
         /// <param name="g"></param>
-        public void DrawCar(Graphics g)
+        public void DrawShip(Graphics g)
         {
             //Нижняя палуба
             Pen pen = new Pen(Color.Black);            

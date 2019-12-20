@@ -114,7 +114,7 @@ namespace WindowsFormsCars
         private void buttonSetShip_Click(object sender, EventArgs e)
         {
             form = new FormShipConfig();
-            form.AddEvent(AddCar);
+            form.AddEvent(AddShip);
             form.Show();
         }
         /// <summary>
@@ -134,6 +134,11 @@ namespace WindowsFormsCars
                 catch (ParkingOverflowException ex)
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,  MessageBoxIcon.Error);
+                    logger.Error(ex.Message);
+                }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Error(ex.Message);
                 }
                 catch (Exception ex)
@@ -198,6 +203,17 @@ namespace WindowsFormsCars
                 }
                 Draw();
             }
-        }       
+        }
+        /// <summary>
+        /// Обработка нажатия кнопки "Сортировка"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
+        }
     }
 }

@@ -178,6 +178,6 @@ namespace WindowsFormsCars
             eventAddShip?.Invoke(ship);
             Close();
         }
-       
+
     }
 }

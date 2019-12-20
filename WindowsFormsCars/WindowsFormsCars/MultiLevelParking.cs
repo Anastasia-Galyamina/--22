@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace WindowsFormsCars
 {
     class MultiLevelParking
     {
+        private Logger logger;
         /// <summary>
         /// Список с уровнями парковки
         /// </summary>
@@ -16,7 +19,7 @@ namespace WindowsFormsCars
         /// <summary>
         /// Сколько мест на каждом уровне
         /// </summary>   
-        private const int countPlaces = 20;
+        private const int countPlaces = 20;       
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -61,7 +64,7 @@ namespace WindowsFormsCars
         /// </summary>
         /// <param name="filename">Путь и имя файла</param>
         /// <returns></returns>
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -70,36 +73,45 @@ namespace WindowsFormsCars
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 //Записываем количество уровней
-                sw.WriteLine("CountLeveles:" + parkingStages.Count);
+                sw.WriteLine("CountLeveles:" + parkingStages.Count); 
                 foreach (var level in parkingStages)
                 {
                     //Начинаем уровень
                     sw.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var ship = level[i];
-                        if (ship != null)
+                       try
                         {
-                            //если место не пустое
+                            var ship = level[i];
                             //Записываем тип корабля
                             if (ship.GetType().Name == "Ship")
                             {
-                                sw.Write(i + ":Ship:");
+                                sw.Write(i + ":Ship:"); 
                             }
                             if (ship.GetType().Name == "MotorShip")
                             {
                                 sw.Write(i + ":MotorShip:");
                             }
                             //Записываемые параметры
-                            sw.WriteLine(ship);
+                            sw.WriteLine(ship); 
                         }
+                        finally { } 
                     }
                 }
-            }
-            return true;
+            }           
         }
         /// <summary>
-        /// Загрузка информации из файла
+        /// Метод записи информации в файл
+        /// </summary>
+        /// <param name="text">Строка, которую следует записать</param>
+        /// <param name="stream">Поток для записи</param>
+      private void WriteToFile(string text, FileStream stream)
+      {
+           byte[] info = new UTF8Encoding(true).GetBytes(text);
+           stream.Write(info, 0, info.Length);
+      }
+        /// <summary>
+        /// Загрузка нформации из файла
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
@@ -107,29 +119,42 @@ namespace WindowsFormsCars
         {
             if (!File.Exists(filename))
             {
-                return false;
-            }
+                logger.Error("Файл не найден");
+                throw new FileNotFoundException();
+                
+            }            
             using (StreamReader sr = new StreamReader(filename))
             {
                 //считываем количество уровней
                 string str = sr.ReadLine();
-                string[] st = str.Split(':');
-                int count = Convert.ToInt32(st[1]);
-                if (parkingStages != null)
+                string[] st = str.Split(':');  
+                int count = Convert.ToInt32(st[1]);    
+                if (st.Contains("CountLeveles"))
                 {
-                    parkingStages.Clear();
+                    //считываем количество уровней                                    
+                    if (parkingStages != null)
+                    {
+                        parkingStages.Clear();
+                    }
+                    parkingStages = new List<Parking<ITransport>>(count);
                 }
-                parkingStages = new List<Parking<ITransport>>(count);
+                else
+                {
+                    //если нет такой записи, то это не те данные
+                    logger.Error("Неверный формат файла");
+                    throw new Exception("Неверный формат файла");
+                    
+                }
                 ITransport ship = null;
                 //идем по считанным записям  
-                str = sr.ReadLine();
+                str = sr.ReadLine();                
                 for (int i = 0; i < count; i++)
                 {
-                    parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
+                    parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));  
                     str = sr.ReadLine();
                     while (str != "Level" && str != null)
                     {
-
+                                                
                         if (str.Split(':')[1] == "Ship")
                         {
                             ship = new Ship(str.Split(':')[2]);
@@ -139,9 +164,9 @@ namespace WindowsFormsCars
                             ship = new MotorShip(str.Split(':')[2]);
                         }
                         parkingStages[i][Convert.ToInt32(str.Split(':')[0])] = ship;
-                        str = sr.ReadLine();
-                    }
-                }
+                        str = sr.ReadLine();                        
+                    }                             
+                }  
             }
             return true;
         }

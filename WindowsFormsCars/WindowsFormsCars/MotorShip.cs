@@ -31,6 +31,18 @@ namespace WindowsFormsCars
             DopColor = dopColor;
             Tube = tube;
         }
+        public MotorShip(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 5)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Tube = Convert.ToBoolean(strs[4]);
+            }
+        }
         public void DrawTube(Graphics g)
         {
             Brush brRed = new SolidBrush(Color.Red);

@@ -95,21 +95,21 @@ namespace WindowsFormsCars
             Draw();
         }        
         /// <summary>
-        /// Обработка нажатия кнопки "Добавить автомобиль"
+        /// Обработка нажатия кнопки "Добавить корабль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonSetShip_Click(object sender, EventArgs e)
         {
             form = new FormShipConfig();
-            form.AddEvent(AddCar);
+            form.AddEvent(AddShip);
             form.Show();
         }
         /// <summary>
         /// Метод добавления корабля
         /// </summary>
         /// <param name="ship"></param>
-        private void AddCar(ITransport ship)
+        private void AddShip(ITransport ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)
             {

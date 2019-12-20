@@ -121,7 +121,7 @@ namespace WindowsFormsCars
         /// Метод добавления корабля
         /// </summary>
         /// <param name="ship"></param>
-        private void AddCar(ITransport ship)
+        private void AddShip(ITransport ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)
             {

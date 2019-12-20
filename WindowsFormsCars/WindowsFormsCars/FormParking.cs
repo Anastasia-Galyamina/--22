@@ -15,7 +15,11 @@ namespace WindowsFormsCars
         /// <summary>
         /// Объект от класса многоуровневой парковки
         /// </summary>
-         MultiLevelParking parking;
+         MultiLevelParking parking;        
+        /// <summary>
+        /// Форма для добавления
+        /// </summary>
+        FormShipConfig form;
         /// <summary>
         /// Количество уровней-парковок
         /// </summary>
@@ -47,57 +51,6 @@ namespace WindowsFormsCars
             parking[listBoxLevels.SelectedIndex].Draw(gr);
             pictureBoxParking.Image = bmp;
            }
-        }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать корабль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetShip_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                 ColorDialog dialog = new ColorDialog();
-                 if (dialog.ShowDialog() == DialogResult.OK)
-                 {
-                     var car = new Ship(100, 1000, dialog.Color);
-                     int place = parking[listBoxLevels.SelectedIndex] + car;
-                     if (place == -1)
-                     {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                     }
-                     Draw();
-                 }
-            }
-        }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать теплоход"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetMotorShip_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                     ColorDialog dialogDop = new ColorDialog();
-                     if (dialogDop.ShowDialog() == DialogResult.OK)
-                     {
-                        var car = new MotorShip(100, 1000, dialog.Color,
-                        dialogDop.Color, true);
-                        int place = parking[listBoxLevels.SelectedIndex] + car;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                     }
-                }
-            }
         }
         /// <summary>
         /// Обработка нажатия кнопки "Забрать корабль"
@@ -140,6 +93,37 @@ namespace WindowsFormsCars
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }        
+        /// <summary>
+        /// Обработка нажатия кнопки "Добавить корабль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSetShip_Click(object sender, EventArgs e)
+        {
+            form = new FormShipConfig();
+            form.AddEvent(AddShip);
+            form.Show();
         }
+        /// <summary>
+        /// Метод добавления корабля
+        /// </summary>
+        /// <param name="ship"></param>
+        private void AddShip(ITransport ship)
+        {
+            if (ship != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + ship;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Корабль не удалось поставить");
+                }
+            }
+        }
+
     }
 }

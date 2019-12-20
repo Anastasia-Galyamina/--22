@@ -48,10 +48,10 @@ namespace WindowsFormsCars
         }
         /// <summary>
         /// Перегрузка оператора сложения
-        /// Логика действия: на парковку добавляется автомобиль
+        /// Логика действия: на парковку добавляется корабль
         /// </summary>
         /// <param name="p">Парковка</param>
-        /// <param name="car">Добавляемый автомобиль</param>
+        /// <param name="car">Добавляемый корабль</param>
         /// <returns></returns>
         public static int operator +(Parking<T> p, T car)
         {
@@ -74,7 +74,7 @@ namespace WindowsFormsCars
         }
         /// <summary>
         /// Перегрузка оператора вычитания
-        /// Логика действия: с парковки забираем автомобиль
+        /// Логика действия: с парковки забираем корабль
         /// </summary>
         /// <param name="p">Парковка</param>
         /// <param name="index">Индекс места, с которого пытаемся извлечь объект</param>

@@ -89,7 +89,7 @@ namespace WindowsFormsCars
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void panelCar_DragEnter(object sender, DragEventArgs e)
+        private void panelShip_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
             {
@@ -105,7 +105,7 @@ namespace WindowsFormsCars
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void panelCar_DragDrop(object sender, DragEventArgs e)
+        private void panelShip_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
